@@ -10,11 +10,14 @@
 
 class VolImage {
     private: // private members
-        int width, height; // width and height of image stack
+        int width, height, numm; // width and height of image stack, and memory used in bytes.
+        int memory;
         std::vector<unsigned char **> slices; // data for each slice, in order
+
     public: // public members
-        VolImage(); // default constructor - define in .cpp
+        VolImage(char* baseName); // default constructor - define in .cpp
         ~VolImage(); // destructor - define in .cpp file
+        VolImage(const VolImage& oldVolImage);
 
         // populate the object with images in stack and
         // set member variables define in .cpp
@@ -28,6 +31,8 @@ class VolImage {
 
         // number of bytes uses to store image data bytes //and pointers (ignore vector<> container, dims etc)
         int volImageSize(void); // define in .cpp
+
+        void export_images(std::string out);
 };
 
 #endif //CPPASS2_VOLIMAGE_H
