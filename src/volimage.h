@@ -29,10 +29,14 @@ class VolImage {
         // extract slice sliceId and write to output - define in .cpp
         void extract(int sliceId, std::string output_prefix);
 
+        void gextract(int row, std::string output_prefix);
+
         // number of bytes uses to store image data bytes //and pointers (ignore vector<> container, dims etc)
         int volImageSize(void); // define in .cpp
 
-        void export_images(std::string out);
+        void noargs(void);
+
+        void writeSlice(unsigned char **, std::string, int w, int h);
 };
 
 #endif //CPPASS2_VOLIMAGE_H
