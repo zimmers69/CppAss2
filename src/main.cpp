@@ -3,21 +3,28 @@
 //
 
 #include <iostream>
+//#include <stdlib.h>
 #include "main.h"
 #include "volimage.h"
 
+using std::string, std::stoi;
 int main(int argc, char* argv[]){
 
     if (argc == 2){
-        std::cout << "processing everything.\n";
+        std::cout << "no args.\n";
         VolImage images(argv[1]);
-        ZMMALE001::processEverything(images);
+        images.noargs();
     } else if (argc == 5) {
-        VolImage images(argv[1]);
-        ZMMALE001::extractImage(argv[3], argv[4], images);
+        if (string(argv[2]).compare("-x") == 0) {
+            VolImage images(argv[1]);
+            images.extract(stoi(argv[3]), string(argv[4]));
+        } else if (string(argv[2]).compare("-g") == 0){
+            VolImage images(argv[1]);
+            images.gextract(stoi(argv[3]), string(argv[4]));
+        }
     } else if (argc == 6) {
         VolImage images(argv[1]);
-        ZMMALE001::diffImage(argv[2], argv[3], argv[4], images);
+        images.diffmap(stoi(argv[3]), stoi(argv[4]), string(argv[5]));
     } else {
         std::cerr << "Incorrect use of program." << std::endl;
         std::cerr << "Usage: volimage <imageBase> [-d i j output_file_name] [-x i output_file_name]" << std::endl;
@@ -33,8 +40,3 @@ void ZMMALE001::extractImage(char* &imageNum, char* &output_name, VolImage &imag
     std::cout << "hey extract";
 }
 
-void ZMMALE001::processEverything(VolImage &images) {
-
-    images.export_images("out");
-
-}
