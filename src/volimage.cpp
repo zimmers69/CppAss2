@@ -6,6 +6,7 @@
 #include "volimage.h"
 #include <string>
 
+using ZMMALE001::VolImage;
 using std::cout;
 using std::endl;
 using std::ifstream;
@@ -160,5 +161,4 @@ void VolImage::gextract(int row, std::string output_prefix) {
         delete [] newSlice[i];
     }
     delete [] newSlice;
-
 }

@@ -7,17 +7,18 @@
 
 #include <vector>
 
+namespace ZMMALE001 {
 
-class VolImage {
+    class VolImage {
     private: // private members
         int width, height, numm; // width and height of image stack, and memory used in bytes.
         int memory;
         std::vector<unsigned char **> slices; // data for each slice, in order
 
     public: // public members
-        VolImage(char* baseName); // default constructor - define in .cpp
+        VolImage(char *baseName); // default constructor - define in .cpp
         ~VolImage(); // destructor - define in .cpp file
-        VolImage(const VolImage& oldVolImage);
+        VolImage(const VolImage &oldVolImage);
 
         // populate the object with images in stack and
         // set member variables define in .cpp
@@ -29,7 +30,7 @@ class VolImage {
         // extract slice sliceId and write to output - define in .cpp
         void extract(int sliceId, std::string output_prefix);
 
-        void gextract(int row, std::string output_prefix);
+        void gextract(int sliceId, std::string output_prefix);
 
         // number of bytes uses to store image data bytes //and pointers (ignore vector<> container, dims etc)
         int volImageSize(void); // define in .cpp
@@ -37,6 +38,6 @@ class VolImage {
         void noargs(void);
 
         void writeSlice(unsigned char **, std::string, int w, int h);
-};
-
+    };
+}
 #endif //CPPASS2_VOLIMAGE_H
