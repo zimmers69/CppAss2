@@ -6,7 +6,8 @@
 #include "volimage.h"
 
 using ZMMALE001::VolImage;
-using std::string, std::stoi;
+using std::string;
+using std::stoi;
 
 int main(int argc, char* argv[]){
 
