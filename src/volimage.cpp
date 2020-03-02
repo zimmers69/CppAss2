@@ -142,7 +142,7 @@ void VolImage::writeSlice(unsigned char ** slice, std::string fname, int w, int 
 void VolImage::gextract(int row, std::string output_prefix) {
 
     string filename = "data_out/" + output_prefix + ".raw", outDatName = "data_out/" + output_prefix + ".data";
-    // create the .dat file
+    // create the .data file
     ofstream outDat(outDatName);
     outDat << to_string(width) + " " + to_string(slices.size()) + " 1" << endl;
     outDat.close();
@@ -153,7 +153,7 @@ void VolImage::gextract(int row, std::string output_prefix) {
         newSlice[s] = slices[s][row];
     }
     // write to the raw file
-    writeSlice(newSlice, filename, width, height);
+    writeSlice(newSlice, filename, width, numm);
 
     //clear memory used by newSlice
     for (int i = 0; i < 100; i++){
